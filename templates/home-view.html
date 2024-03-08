@@ -1,0 +1,10 @@
+{% extends "base.html" %}
+
+{% block content%}
+<h1>Title = {{object.title}}, id= {{object.id}} Content= {{object.content}}</h1>
+
+<ul>{% for x in article_queryset%}
+    <li><a href="/articles/{{x.id}}">{{x.title}} - {{x.content}}</a></li>
+{%endfor%}</ul>
+
+{% endblock content%}
