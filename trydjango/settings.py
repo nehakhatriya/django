@@ -25,10 +25,10 @@ SECRET_KEY = os.environ.get('SECRET_KEY','django-insecure-a2212n-v0o*yg-!)w8fdpj
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG=str(os.environ.get('DEBUG'))=='1'
 
-ENV_ALLOWED_HOST = os.environ.get('DJANGO_ALLOWED_HOST') or None
+
 ALLOWED_HOSTS = []
-if ENV_ALLOWED_HOST is not None:
-    ALLOWED_HOSTS = [ ENV_ALLOWED_HOST ]
+if not DEBUG :
+    ALLOWED_HOSTS += [os.environ.get('DJANGO_ALLOWED_HOST')]
 
 # Application definition
 
