@@ -39,7 +39,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    'article',
+    'article', #added the app article
 ]
 
 MIDDLEWARE = [
@@ -53,11 +53,11 @@ MIDDLEWARE = [
 ]
 
 ROOT_URLCONF = 'trydjango.urls'
-LOGIN_URL="/login/"
+LOGIN_URL="/login/" #default login path
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [BASE_DIR/'templates'],
+        'DIRS': [BASE_DIR/'templates'], #do define template path
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
