@@ -22,7 +22,7 @@ urlpatterns = [
     path('',home_view),
     path('articles/',search_view),
     path('articles/create/',create_view),
-    path('articles/<int:id>/',article_view),
+    path('articles/<slug:slug>/',article_view),
     path('admin/', admin.site.urls),
     path('login/',login_view),
     path('logout/',logout_view),

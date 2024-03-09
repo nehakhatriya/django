@@ -25,10 +25,10 @@ def search_view(request):
     }
     return render(request,"articles/search.html",context=context)
 
-def article_view(request,id):
+def article_view(request,slug):
     article_object=None
     if id is not None:
-        article_object=Article.objects.get(id=id)
+        article_object=Article.objects.get(slug=slug)
     context={
             "article_object":article_object,
     }
