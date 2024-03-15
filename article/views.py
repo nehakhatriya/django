@@ -3,6 +3,9 @@ from .models import Article
 # Create your views here.
 from django.contrib.auth.decorators import login_required
 from .forms import ArticleForm
+from django.shortcuts import redirect
+from django.db.models import Q
+
 @login_required
 def create_view(request):
     form=ArticleForm(request.POST or None)
@@ -11,17 +14,22 @@ def create_view(request):
     }
     if request.method=="POST":
         if form.is_valid():
-            form.save()
+            obj=form.save()
             context['form']=ArticleForm()
+            return redirect(obj.get_absolute_url())
     return render(request,"articles/create.html",context=context)
 
 def search_view(request):
-    query=request.GET
-    query_dict=query.get("q")
-    if id is not None:
-        article_object=Article.objects.get(id=query_dict)
+    query_dict=request.GET
+    query=query_dict.get("slug")
+    print(query)
+    qs=Article.objects.all()
+    if query is not None: 
+        lookups= Q(title__icontains=query) | Q(content__icontains=query)
+        qs=Article.objects.filter(lookups)
+    print(qs)
     context={
-        "object":article_object
+        "object":qs
     }
     return render(request,"articles/search.html",context=context)
 
