@@ -20,7 +20,7 @@ class Article(models.Model):
     #     super().save(*args,**kwargs)
 
     def get_absolute_url(self):
-        return reverse('article-detail', kwargs={"slug":self.slug})
+        return reverse('article:detail', kwargs={"slug":self.slug})
 
 def article_presave(sender, instance, *args,**kwargs):
     if instance.slug is None:

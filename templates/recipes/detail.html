@@ -1,0 +1,19 @@
+{% extends "base.html"%}
+
+{%block content%}
+<h1> {{object.name}} 
+    {%if object.get_edit_path%}<a href={{object.get_edit_path}}>Edit</a>{%endif%}</h1>
+<p> Ingredients:
+    <p>
+        {% for obj in object.get_ingredients %} 
+            <p>{{obj.name}}</p>
+            <p>{{obj.as_mks}} </p>
+            <p>{{obj.as_imperial}}</p>
+        {%endfor%}
+    </p>
+</p>
+<p>{{object.directions}}</p>
+<p>{{object.description}}</p>
+
+
+{%endblock content%}
